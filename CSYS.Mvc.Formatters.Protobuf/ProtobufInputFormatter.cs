@@ -12,7 +12,7 @@ namespace CSYS.Mvc.Formatters.Protobuf
 
         public override bool CanRead(InputFormatterContext context)
         {
-            return true;
+            return context.HttpContext.Request.ContentType == "application/x-protobuf";
         }
 
         public override Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context)
