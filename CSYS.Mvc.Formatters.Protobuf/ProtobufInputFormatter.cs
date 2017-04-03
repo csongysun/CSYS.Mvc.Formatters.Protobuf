@@ -10,10 +10,15 @@ namespace CSYS.Mvc.Formatters.Protobuf
     {
         static MediaTypeHeaderValue protoMediaType = MediaTypeHeaderValue.Parse("application/x-protobuf");
 
-        public override bool CanRead(InputFormatterContext context)
+        public ProtobufInputFormatter()
         {
-            return context.HttpContext.Request.ContentType == "application/x-protobuf";
+            SupportedMediaTypes.Add(protoMediaType);
         }
+
+        //public override bool CanRead(InputFormatterContext context)
+        //{
+        //    return context.HttpContext.Request.ContentType == "application/x-protobuf";
+        //}
 
         public override Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context)
         {
